@@ -9,9 +9,55 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
+    <div class="form-modal" id="form-modal">
+      <div class="edit-box">
+        <form>
+          <h3>
+            Add new content
+          </h3>
+          <label for="title">Section title</label>
+          <input type="text" name="title" />
+          <label for="headline">Headline</label>
+          <input type="text" name="headline" />
+          <label for="subheadline">Sub-headline</label>
+          <input type="text" name="subheadline" />
+          <label for="textarea-text">Text</label>
+          <textarea type="text" name="textarea-text" rows="4"></textarea>
+          <div class="two-column-form">
+            <div class="column">
+              <label>
+                <input type="checkbox" name="checkbox-image" id="checkbox-image"/>
+                Image Element
+              </label>
+              <label for="image">Image URL</label>
+              <input type="text" name="image" disabled />
+            </div>
+            <div class="column">
+              <label>
+                <input type="checkbox" name="checkbox-cta" id="checkbox-cta"/>
+                CTA button
+              </label>
+              <label for="cta">CTA button text</label>
+              <input type="text" name="cta" disabled />
+            </div>
+          </div>
+        </form>
+        <div class="buttons-container">
+          <div class="close-container">
+            <button class="btn-simple" id="cancel-btn">Cancel</button>
+          </div>
+
+          <div class="add-container">
+            <button class="btn-cta" id="add-btn">Add</button>
+          </div>
+        </div>
+      </div>  
+    </div>
+
+
     <div class="maxwidth-container">
       <header id="header">
-        <button class="btn-simple">Add New Content</button>
+        <button class="btn-simple" id="add-new-content">Add New Content</button>
         <div id="toggle-menu" class="toggle-menu">
           <div class="circle"></div>
           <div class="circle"></div>

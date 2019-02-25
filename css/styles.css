@@ -8,6 +8,7 @@
 	src: url("../assets/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf");
 }
 
+/* TEXT */
 h2,
 h3,
 h5,
@@ -44,6 +45,50 @@ p {
 	color: #848686;
 	font-size: 16px;
 	line-height: 24px;
+}
+
+/* BUTTONS */
+
+button {
+	cursor: pointer;
+}
+
+button.btn-simple {
+	background: transparent;
+	border: none;
+	text-decoration: underline;
+	-webkit-appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	outline: none;
+	font-family: "Lato";
+	font-size: 15px;
+}
+
+button.btn-cta {
+	background-color: transparent;
+	border: 1px solid #2178ff;
+	border-radius: 2px;
+	text-decoration: none;
+	-webkit-appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	outline: none;
+
+	width: 100%;
+
+	color: #2178ff;
+	font-family: "Lato";
+	font-size: 16px;
+	line-height: 20px;
+	padding: 14px 5px;
+
+	transition: background-color 0.1s linear, color 0.1s linear;
+}
+
+button.btn-cta:hover {
+	background-color: #2178ff;
+	color: white;
 }
 
 body {
@@ -223,53 +268,132 @@ header .pages > p:hover {
 	border-bottom: 1px solid #f1f2f2;
 }
 
-/* BUTTONS */
+/* EDIT BOX MODAL */
 
-button {
-	cursor: pointer;
+.form-modal {
+	position: fixed;
+	top: 100%;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 3;
+	opacity: 0;
+
+	background-color: rgba(245, 245, 245, 0.9);
+
+	font-family: "Lato", "sans-serif";
+
+	transition: top 0.2s linear, opacity 0.2s linear;
 }
 
-button.btn-simple {
-	background: transparent;
-	border: none;
-	text-decoration: underline;
-	-webkit-appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	outline: none;
-	font-family: "Lato";
-	font-size: 15px;
+.form-modal .edit-box {
+	width: 80vw;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 0;
+	right: 0;
+	margin: auto;
 }
 
-button.btn-cta {
-	background-color: transparent;
-	border: 1px solid #2178ff;
-	border-radius: 2px;
-	text-decoration: none;
-	-webkit-appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	outline: none;
+.form-modal form {
+	padding: 40px 78px;
+	background: white;
+}
 
+.form-modal h3 {
+	font-size: 20px;
+	line-height: 20px;
+	color: #444444;
+	font-family: "Lato", sans-serif;
+}
+
+.form-modal label {
 	width: 100%;
-
 	color: #2178ff;
-	font-family: "Lato";
 	font-size: 16px;
 	line-height: 20px;
-	padding: 14px 5px;
 
-	transition: background-color 0.1s linear, color 0.1s linear;
+	display: block;
+	padding-bottom: 8px;
+}
+.form-modal input[type="text"],
+.form-modal textarea {
+	width: 100%;
+	font-size: 16px;
+	line-height: 20px;
+	color: #848686;
+
+	padding: 14px 16px;
+	border-radius: 2px;
+	border: 1px solid #848686;
+
+	outline: none;
+	margin-bottom: 24px;
+
+	box-sizing: border-box;
+
+	resize: none;
 }
 
-button.btn-cta:hover {
-	background-color: #2178ff;
-	color: white;
+.form-modal .two-column-form {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+}
+
+.form-modal .column {
+	flex: 1;
+	padding-top: 20px;
+}
+.form-modal .two-column-form .column:last-of-type {
+	padding-left: 0px;
+}
+
+.form-modal .buttons-container {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding-top: 40px;
+}
+
+.form-modal .close-container {
+	padding-right: 40px;
+}
+.form-modal .close-container .btn-simple {
+	text-decoration: none;
+}
+.form-modal .add-container {
+	min-width: 200px;
+}
+
+body.modal-open {
+	overflow: hidden;
+}
+
+.modal-open .form-modal {
+	opacity: 1;
+	top: 0;
 }
 
 /* MEDIA QUERIES */
 
 @media (min-width: 480px) {
+	/* MODAL */
+	.form-modal .two-column-form {
+		flex-direction: row;
+	}
+
+	.form-modal .column {
+		flex: 1;
+		padding-top: 20px;
+	}
+	.form-modal .two-column-form .column:last-of-type {
+		padding-left: 24px;
+	}
+
 	/* IMAGE ARTICLE */
 	article.image .image-container {
 		padding: 0;

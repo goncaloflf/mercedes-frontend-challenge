@@ -8,6 +8,9 @@
 	src: url("../assets/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf");
 }
 
+html {
+	scroll-behavior: smooth;
+}
 .hidden {
 	display: none;
 }
@@ -18,6 +21,8 @@ h3,
 h5,
 p {
 	margin: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 h5 {
@@ -113,15 +118,24 @@ header {
 	height: 50px;
 	display: flex;
 	justify-content: space-between;
-	position: relative;
+	position: fixed;
+	background: #f9f9f9;
+	left: 0;
+	right: 0;
+	z-index: 4;
+	padding: 0 20px;
+	max-width: 1024px;
+	margin: auto;
 }
 
 .articles {
 	padding-bottom: 40px;
+	padding-top: 50px;
 }
 
 article {
 	padding: 40px;
+	margin-bottom: 20px;
 }
 
 article.image {
@@ -134,16 +148,13 @@ article.image .article-inner {
 	flex-direction: column;
 }
 
-article.image .text-container {
-	flex-basis: 50%;
-	max-width: 400px;
-}
-
 article.image .image-container {
-	max-width: 372px;
+	max-width: 100%;
 	width: 100%;
 	flex-basis: 50%;
 	padding-top: 40px;
+	float: right;
+	order: 99;
 }
 
 article .image-holder {
@@ -172,6 +183,18 @@ article.cta .button-container {
 
 article.simple .text-container {
 	flex-basis: 100%;
+}
+
+article.image .text-container {
+	display: flex;
+	flex-direction: column;
+
+	font-family: "Lato";
+	color: #848686;
+	font-size: 16px;
+	line-height: 24px;
+
+	width: 100%;
 }
 
 .sidebar {
@@ -248,7 +271,8 @@ header .circle {
 
 header .pages {
 	position: absolute;
-	width: 100%;
+	left: 0;
+	right: 0;
 	margin-top: 50px;
 	-webkit-box-shadow: 3px 3px 3px -3px rgba(132, 134, 134, 1),
 		3px 3px 3px -3px rgba(132, 134, 134, 1),
@@ -269,7 +293,7 @@ header.open .pages {
 	max-height: 50vh;
 }
 
-header .pages > p {
+header .pages > a {
 	padding-left: 16px;
 	height: 44px;
 	display: flex;
@@ -277,8 +301,14 @@ header .pages > p {
 	background: white;
 	border-bottom: 1px solid #f1f2f2;
 	cursor: pointer;
+	text-transform: none;
+
+	font-family: "Lato";
+	color: #848686;
+	font-size: 16px;
+	line-height: 24px;
 }
-header .pages > p:hover {
+header .pages > a:hover {
 	color: white;
 	background: #2178ff;
 	border-bottom: 1px solid #f1f2f2;
@@ -294,7 +324,7 @@ header .pages > p:hover {
 	right: 0;
 	width: 100vw;
 	height: 100vh;
-	z-index: 3;
+	z-index: 6;
 	opacity: 0;
 
 	background-color: rgba(245, 245, 245, 0.9);
@@ -302,6 +332,8 @@ header .pages > p:hover {
 	font-family: "Lato", "sans-serif";
 
 	transition: top 0.2s linear, opacity 0.2s linear;
+
+	overflow: hidden;
 }
 
 .form-modal .edit-box {
@@ -313,7 +345,7 @@ header .pages > p:hover {
 }
 
 .form-modal form {
-	padding: 40px 78px;
+	padding: 40px 25px;
 	background: white;
 }
 
@@ -358,6 +390,15 @@ header .pages > p:hover {
 	flex-direction: column;
 }
 
+.form-modal input[name="image"] {
+	margin-bottom: 3px;
+}
+.form-modal .small-checkbox {
+	font-size: 14px;
+	line-height: 16px;
+	color: #444444;
+}
+
 .form-modal .column {
 	flex: 1;
 	padding-top: 20px;
@@ -371,10 +412,12 @@ header .pages > p:hover {
 	justify-content: flex-end;
 	align-items: center;
 	padding-top: 40px;
+	margin-bottom: 40px;
+	flex-direction: column-reverse;
 }
 
 .form-modal .close-container {
-	padding-right: 40px;
+	padding-top: 40px;
 }
 .form-modal .close-container .btn-simple {
 	text-decoration: none;
@@ -452,5 +495,29 @@ body.modal-open {
 
 	.maxwidth-container {
 		padding: 0 48px;
+	}
+
+	article.image .image-container {
+		max-width: 45%;
+	}
+	article.image.left .image-container {
+		float: left;
+		padding-left: 0;
+		padding-right: 20px;
+	}
+	article.image .text-container {
+		display: block;
+	}
+	.form-modal form {
+		padding: 40px 78px;
+		background: white;
+	}
+	.form-modal .buttons-container {
+		margin-bottom: 40px;
+		flex-direction: row;
+	}
+	.form-modal .close-container {
+		padding-right: 40px;
+		padding-top: 0;
 	}
 }

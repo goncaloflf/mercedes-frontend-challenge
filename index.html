@@ -21,7 +21,7 @@
 					<input type="text" name="headline" />
 					<label for="subheadline">Sub-headline</label>
 					<input type="text" name="subheadline" />
-					<label for="textarea-text">Text</label>
+					<label for="textarea-text">Text-area (mandatory)</label>
 					<textarea
 						type="text"
 						name="textarea-text"
@@ -38,7 +38,15 @@
 								Image Element
 							</label>
 							<label for="image">Image URL</label>
-							<input type="text" name="image" disabled />
+              <input type="text" name="image" disabled />
+              <label class="small-checkbox">
+                  <input
+                    type="checkbox"
+                    name="checkbox-right"
+                    id="checkbox-right"
+                  />
+                  Image to the right
+                </label>
 						</div>
 						<div class="column">
 							<label>
@@ -89,117 +97,42 @@
 					<div class="circle"></div>
 					<div class="circle"></div>
 				</div>
-				<div class="pages">
-					<p>Section 1</p>
-					<p>Section 1</p>
-					<p>Section 1</p>
+				<div class="pages" id="pages">
+
 				</div>
 			</header>
 			<section class="articles">
-				<article class="image">
-					<div class="article-inner">
-						<div class="text-container">
-							<h5>Section 1</h5>
-							<h2>Mercedes-Benz.io</h2>
-							<h3>The best or nothing.</h3>
-							<p>
-								Lorem ipsum dolor sit amet, consectetuer
-								adipiscing elit. Duis aute irure dolor in
-								reprehenderit in voluptate velit esse cillum
-								dolore eu fugiat nulla pariatur.
-							</p>
-						</div>
-						<div class="image-container">
-							<div
-								class="image-holder"
-								style="background-image:url('https://s1.cdn.autoevolution.com/images/news/pink-mercedes-g-class-44-squared-is-all-about-girl-power-125602_1.jpg')"
-							></div>
-						</div>
-					</div>
-				</article>
-				<article class="cta">
-					<div class="article-inner">
-						<div class="text-container">
-							<h5>Section 1</h5>
-							<h2>Mercedes-Benz.io</h2>
-							<h3>The best or nothing.</h3>
-							<p>
-								Lorem ipsum dolor sit amet, consectetuer
-								adipiscing elit. Duis aute irure dolor in
-								reprehenderit in voluptate velit esse cillum
-								dolore eu fugiat nulla pariatur.
-							</p>
-						</div>
-						<div class="button-container">
-							<button class="btn-cta">Know more</button>
-						</div>
-					</div>
-				</article>
-				<article class="image">
-					<div class="article-inner">
-						<div class="text-container">
-							<h5>Section 1</h5>
-							<h2>Mercedes-Benz.io</h2>
-							<h3>The best or nothing.</h3>
-							<p>
-								Lorem ipsum dolor sit amet, consectetuer
-								adipiscing elit. Duis aute irure dolor in
-								reprehenderit in voluptate velit esse cillum
-								dolore eu fugiat nulla pariatur.
-							</p>
-						</div>
-						<div class="image-container">
-							<div
-								class="image-holder"
-								style="background-image:url('https://s1.cdn.autoevolution.com/images/news/pink-mercedes-g-class-44-squared-is-all-about-girl-power-125602_1.jpg')"
-							></div>
-						</div>
-					</div>
-				</article>
+		
 			</section>
 		</div>
-		<nav class="sidebar">
-			<div class="element">
-				<div class="text">Section 1</div>
-				<div class="circle"></div>
-			</div>
-			<div class="element">
-				<div class="text">Section 2</div>
-				<div class="circle"></div>
-			</div>
-			<div class="element">
-				<div class="text">Section 3</div>
-				<div class="circle"></div>
-			</div>
-			<div class="element">
-				<div class="text">Section 4</div>
-				<div class="circle"></div>
-			</div>
+		<nav class="sidebar" id="sidebar">
+
 		</nav>
 
 		<div id="template-holder" class="hidden">
 			<!-- Template for Image Article -->
-			<article class="image">
-				<div class="article-inner">
-					<div class="text-container">
-						<h5></h5>
-						<!-- SectionTitle-->
-						<h2>Mercedes-Benz.io</h2>
-						<!-- Headline -->
-						<h3>The best or nothing.</h3>
-						<!-- Sub-headline -->
-						<p></p>
-						<!-- Text -->
-					</div>
-					<div class="image-container">
-						<div
-							class="image-holder"
-							style="background-image:url('https://s1.cdn.autoevolution.com/images/news/pink-mercedes-g-class-44-squared-is-all-about-girl-power-125602_1.jpg')"
-						></div>
-						<!-- Image: Set as URL of background-image -->
-					</div>
-				</div>
-			</article>
+			<section class="articles">
+          <article class="image">
+            <div class="article-inner">
+              <div class="text-container">
+                <div class="image-container">
+                  <div
+                    class="image-holder"
+                    style='background-image: url("https://www.webmotors.com.br/vender/img/new-header-car.png");'
+                  ></div>
+                  <!-- Image: Set as URL of background-image -->
+                </div>
+                <h5></h5>
+                <!-- SectionTitle-->
+                <h2></h2>
+                <!-- Headline -->
+                <h3></h3>
+                <!-- Sub-headline -->
+  
+                <span></span>
+              </div>
+            </div>
+          </article>
 
 			<!-- Template for CTA Article -->
 			<article class="cta">
@@ -235,7 +168,15 @@
 						<p></p>
 					</div>
 				</div>
-			</article>
+      </article>
+
+      <a class="element">
+          <div class="text"></div>
+          <div class="circle"></div>
+      </a>
+
+      <a class="menu-entry"></a>
+
 		</div>
 		<script src="js/script.js"></script>
 	</body>

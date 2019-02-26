@@ -1,3 +1,5 @@
+var nextElement = 1;
+
 document.getElementById("toggle-menu").addEventListener("click", function() {
 	document.getElementById("header").classList.toggle("open");
 });
@@ -66,9 +68,33 @@ document.getElementById("add-btn").addEventListener("click", function() {
 	let valid = validateForm(object);
 
 	if (valid) {
-		appendNewObject(object);
+		appendNewObject(object, closeModal);
+		createIndexForRecentArticle(object);
+		createIndexForRecentArticleSM(object);
+
+		nextElement++;
 	}
 });
+
+function createIndexForRecentArticleSM(object) {
+	let entry = document
+		.querySelector("#template-holder .menu-entry")
+		.cloneNode(true);
+
+	entry.innerHTML = object["title"];
+	entry.href = "#sec" + nextElement;
+
+	document.querySelector("#pages").prepend(entry);
+}
+
+function createIndexForRecentArticle() {
+	let entry = document
+		.querySelector("#template-holder .element")
+		.cloneNode(true);
+	entry.querySelector(".text").innerHTML = object["title"];
+	entry.href = "#sec" + nextElement;
+	document.getElementById("sidebar").prepend(entry);
+}
 
 /*
  *  Object received:
@@ -79,11 +105,12 @@ document.getElementById("add-btn").addEventListener("click", function() {
  *   -
  *   - (on/off) checkbox-image (optional)
  *   - image (optional)
+ * 	 - (on/off) checkbox-right (optional)
  *   -
  *   - (on/off) checkbox-cta (optional)
  *   - cta (optional)
  */
-function appendNewObject(object) {
+function appendNewObject(object, callback) {
 	let article;
 
 	if ("checkbox-image" in object && object["checkbox-image"] == "on") {
@@ -93,22 +120,33 @@ function appendNewObject(object) {
 		article.querySelector(".image-holder").style.backgroundImage = `url(${
 			object["image"]
 		})`;
-	} else if ("checkbox-cta" in object && object["checkbox-cta"] == "on") {
-		article = document
-			.querySelector("#template-holder .cta")
-			.cloneNode(true);
-		article.querySelector(".cta-button").innerHTML = object["cta"];
+		article.querySelector("span").innerHTML = object["textarea-text"];
+
+		if (!("checkbox-right" in object && object["checkbox-right"] == "on")) {
+			article.classList.add("left");
+		}
 	} else {
-		article = document
-			.querySelector("#template-holder .simple")
-			.cloneNode(true);
+		if ("checkbox-cta" in object && object["checkbox-cta"] == "on") {
+			article = document
+				.querySelector("#template-holder .cta")
+				.cloneNode(true);
+			article.querySelector(".cta-button").innerHTML = object["cta"];
+		} else {
+			article = document
+				.querySelector("#template-holder .simple")
+				.cloneNode(true);
+		}
+		article.querySelector("p").innerHTML = object["textarea-text"];
 	}
 	article.querySelector("h5").innerHTML = object["title"];
 	article.querySelector("h2").innerHTML = object["headline"];
 	article.querySelector("h3").innerHTML = object["subheadline"];
-	article.querySelector("p").innerHTML = object["textarea-text"];
 
+	article.id = "sec" + nextElement;
+
+	clearInputFields();
 	document.querySelector(".articles").prepend(article);
+	setTimeout(callback(), 1000);
 }
 
 function validateForm(object) {
@@ -157,8 +195,23 @@ function clearErrorMessages() {
 
 function closeModal() {
 	document.body.classList.remove("modal-open");
+	clearErrorMessages();
 }
 
 function openModal() {
 	document.body.classList.add("modal-open");
+}
+
+function clearInputFields() {
+	document
+		.querySelectorAll("input[type='text'], textarea")
+		.forEach((key, value) => {
+			key.value = "";
+		});
+
+	document
+		.querySelectorAll("input[type='checkbox']")
+		.forEach((key, value) => {
+			key.checked = false;
+		});
 }

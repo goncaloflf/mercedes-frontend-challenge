@@ -16,17 +16,17 @@ Hello. My name is Gonçalo Ferreira and this is my proposal for the SINFO Challe
 
 ## Tasks completed
 
-| Task    | Completed          |
-| ------- | ------------------ |
-| 1       | :heavy_check_mark: |
-| 2       | :heavy_check_mark: |
-| 3       | :heavy_check_mark: |
-| 4       | :heavy_check_mark: |
-| 5       | :heavy_check_mark: |
-| 6       | :heavy_check_mark: |
+|  Task   |     Completed      |
+| :-----: | :----------------: |
+|    1    | :heavy_check_mark: |
+|    2    | :heavy_check_mark: |
+|    3    | :heavy_check_mark: |
+|    4    | :heavy_check_mark: |
+|    5    | :heavy_check_mark: |
+|    6    | :heavy_check_mark: |
 | Bonus 1 | :heavy_check_mark: |
 | Bonus 2 | :heavy_check_mark: |
-| Bonus 3 | :x:                |
-| Bonus 4 | :x:                |
+| Bonus 3 |        :x:         |
+| Bonus 4 |        :x:         |
 
 Thank you for your time!

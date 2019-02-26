@@ -8,6 +8,10 @@
 	src: url("../assets/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf");
 }
 
+.hidden {
+	display: none;
+}
+
 /* TEXT */
 h2,
 h3,
@@ -83,6 +87,10 @@ button.btn-cta {
 	line-height: 20px;
 	padding: 14px 5px;
 
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
 	transition: background-color 0.1s linear, color 0.1s linear;
 }
 
@@ -98,7 +106,7 @@ body {
 .maxwidth-container {
 	max-width: 1024px;
 	margin: 0 auto;
-	padding: 0 48px;
+	padding: 0 20px;
 }
 
 header {
@@ -106,6 +114,10 @@ header {
 	display: flex;
 	justify-content: space-between;
 	position: relative;
+}
+
+.articles {
+	padding-bottom: 40px;
 }
 
 article {
@@ -158,8 +170,12 @@ article.cta .button-container {
 	margin-top: 40px;
 }
 
+article.simple .text-container {
+	flex-basis: 100%;
+}
+
 .sidebar {
-	position: absolute;
+	position: fixed;
 	left: 0;
 	top: 0;
 	bottom: 0;
@@ -272,7 +288,7 @@ header .pages > p:hover {
 
 .form-modal {
 	position: fixed;
-	top: 100%;
+	top: -100%;
 	left: 0;
 	bottom: 0;
 	right: 0;
@@ -291,8 +307,6 @@ header .pages > p:hover {
 .form-modal .edit-box {
 	width: 80vw;
 	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
 	left: 0;
 	right: 0;
 	margin: auto;
@@ -369,6 +383,18 @@ header .pages > p:hover {
 	min-width: 200px;
 }
 
+.form-modal .error-holder {
+	text-align: right;
+}
+.form-modal .error-holder p {
+	color: red;
+	display: none;
+}
+
+.form-modal .error-holder p.show {
+	display: inline;
+}
+
 body.modal-open {
 	overflow: hidden;
 }
@@ -376,6 +402,8 @@ body.modal-open {
 .modal-open .form-modal {
 	opacity: 1;
 	top: 0;
+
+	overflow: auto;
 }
 
 /* MEDIA QUERIES */
@@ -420,5 +448,9 @@ body.modal-open {
 
 	header .toggle-menu {
 		display: none;
+	}
+
+	.maxwidth-container {
+		padding: 0 48px;
 	}
 }

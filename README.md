@@ -15,6 +15,7 @@ Hello. My name is Gonçalo Ferreira and this is my proposal for the SINFO Challe
 2. All the animations are powered by CSS, using transition.
 3. FormData is not used to get the form information to allow the proposal to be compatible with IE.
 4. Tested on Chrome 72 and Edge.
+5. Used Normalize.css to make rendering more consistent (https://github.com/necolas/normalize.css)
 
 ## Tasks completed
 

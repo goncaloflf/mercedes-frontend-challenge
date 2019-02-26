@@ -135,7 +135,7 @@ function createIndexForRecentArticleSM(object) {
  * function createIndexForRecentArticle
  * Clones the template for navigation (desktop), populates it and appends it to the DOM
  */
-function createIndexForRecentArticle() {
+function createIndexForRecentArticle(object) {
 	let entry = document
 		.querySelector("#template-holder .element")
 		.cloneNode(true);

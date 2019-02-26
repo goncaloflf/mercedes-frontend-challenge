@@ -1,15 +1,32 @@
+/* Used to ID the new articles */
 var nextElement = 1;
 
+/* ******************************** */
+/* ******** EVENT LISTENERS *********/
+/* ******************************** */
+
+/*
+ * Event Listener: click
+ * Toggle menu on mobile
+ */
 document.getElementById("toggle-menu").addEventListener("click", function() {
 	document.getElementById("header").classList.toggle("open");
 });
 
+/*
+ * Event Listener: click
+ * Closes menu if user clicks outside of header
+ */
 document.body.addEventListener("click", function(event) {
 	if (!event.target.closest("header")) {
 		document.getElementById("header").classList.remove("open");
 	}
 });
 
+/*
+ * Event Listener: click
+ * Close modal if user clicks outside of exit box
+ */
 document
 	.getElementById("form-modal")
 	.addEventListener("click", function(event) {
@@ -18,16 +35,28 @@ document
 		}
 	});
 
+/*
+ * Event Listener: click
+ * Opens modal on clicking "Add New Content"
+ */
 document
 	.getElementById("add-new-content")
 	.addEventListener("click", function() {
 		openModal();
 	});
 
+/*
+ * Event Listener: click
+ * Close modal on clicking "cancel"
+ */
 document.getElementById("cancel-btn").addEventListener("click", function() {
 	closeModal();
 });
 
+/*
+ * Event Listener: change
+ * Disables input for image/cta depending on which checkbox changed
+ */
 document
 	.getElementById("checkbox-image")
 	.addEventListener("change", function(e) {
@@ -52,16 +81,23 @@ document.getElementById("checkbox-cta").addEventListener("change", function(e) {
 	}
 });
 
-var object;
-
+/*
+ * Event Listener: click
+ * Parses the form and creates an object with its values.
+ * Validates the form and issues error messages if necessary.
+ * Creates new element, appends it to DOM and closes modal
+ * Adds the new article in the navigation.
+ */
 document.getElementById("add-btn").addEventListener("click", function() {
 	let form = document.getElementById("newarticle-form");
-	let formData = new FormData(form);
 
-	/* Parse FormData object to JavaScript Object */
-	object = {};
-	formData.forEach(function(value, key) {
-		object[key] = value;
+	let object = {};
+	form.querySelectorAll("input, textarea").forEach((key, value) => {
+		if (key.type == "text" || key.tagName.toUpperCase() == "TEXTAREA") {
+			object[key.name] = key.value;
+		} else {
+			object[key.name] = key.checked ? "on" : "off";
+		}
 	});
 
 	/* Validates form (and adds the corresponding error messages) */
@@ -76,6 +112,14 @@ document.getElementById("add-btn").addEventListener("click", function() {
 	}
 });
 
+/* ******************************** */
+/* *********** FUNCTIONS ************/
+/* ******************************** */
+
+/*
+ * function createIndexForRecentArticleSM
+ * Clones the template for navigation (mobile), populates it and appends it to the DOM
+ */
 function createIndexForRecentArticleSM(object) {
 	let entry = document
 		.querySelector("#template-holder .menu-entry")
@@ -87,6 +131,10 @@ function createIndexForRecentArticleSM(object) {
 	document.querySelector("#pages").prepend(entry);
 }
 
+/*
+ * function createIndexForRecentArticle
+ * Clones the template for navigation (desktop), populates it and appends it to the DOM
+ */
 function createIndexForRecentArticle() {
 	let entry = document
 		.querySelector("#template-holder .element")
@@ -109,6 +157,12 @@ function createIndexForRecentArticle() {
  *   -
  *   - (on/off) checkbox-cta (optional)
  *   - cta (optional)
+ */
+/*
+ * function appendNewObject
+ * Clones the template according to options in the form and appends it to the DOM.
+ * Accepts a callback function to be executed afterwards (used in this case to close the modal
+ * when this function is called)
  */
 function appendNewObject(object, callback) {
 	let article;
@@ -149,6 +203,10 @@ function appendNewObject(object, callback) {
 	setTimeout(callback(), 1000);
 }
 
+/*
+ * function validateForm
+ * Receives an object with the values of the input. Validates mandatory fields.
+ */
 function validateForm(object) {
 	clearErrorMessages();
 
@@ -185,6 +243,10 @@ function validateForm(object) {
 	return valid;
 }
 
+/*
+ * function clearErrorMessages
+ * Hides the error messages on the form
+ */
 function clearErrorMessages() {
 	document
 		.querySelectorAll(".error-holder .show")
@@ -193,15 +255,27 @@ function clearErrorMessages() {
 		});
 }
 
+/*
+ * function closeModal
+ * Closes the modal
+ */
 function closeModal() {
 	document.body.classList.remove("modal-open");
 	clearErrorMessages();
 }
 
+/*
+ * function openModal
+ * Opens the modal
+ */
 function openModal() {
 	document.body.classList.add("modal-open");
 }
 
+/*
+ * function clearInputFields
+ * Resets all form control to default values
+ */
 function clearInputFields() {
 	document
 		.querySelectorAll("input[type='text'], textarea")

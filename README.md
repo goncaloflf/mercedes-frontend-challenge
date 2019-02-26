@@ -13,6 +13,8 @@ Hello. My name is Gonçalo Ferreira and this is my proposal for the SINFO Challe
 
 1. To avoid using Document.createElement, a basic template system is at use. This means that I have templated in an hidden element all the elements that can be generated (articles and navigation entries). These elements are then cloned using Document.cloneNode(), which a quick and dirty search suggests to be faster (https://github.com/sophiebits/innerhtml-vs-createelement-vs-clonenode)
 2. All the animations are powered by CSS, using transition.
+3. FormData is not used to get the form information to allow the proposal to be compatible with IE.
+4. Tested on Chrome 72 and Edge.
 
 ## Tasks completed
 

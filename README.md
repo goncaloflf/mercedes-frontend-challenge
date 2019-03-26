@@ -1,6 +1,6 @@
 # MERCEDES-BENZ.IO SINFO CHALLENGE
 
-Hello. My name is Gonçalo Ferreira and this is my proposal for the SINFO Challenge.
+This is the 3rd place solution in the Mercedes-Benz.io Challenge launched at SINFO 2019.
 
 ## Assumptions
 
@@ -16,20 +16,5 @@ Hello. My name is Gonçalo Ferreira and this is my proposal for the SINFO Challe
 3. FormData is not used to get the form information to allow the proposal to be compatible with IE.
 4. Tested on Chrome 72 and Edge.
 5. Used Normalize.css to make rendering more consistent (https://github.com/necolas/normalize.css)
-
-## Tasks completed
-
-|  Task   |     Completed      |
-| :-----: | :----------------: |
-|    1    | :heavy_check_mark: |
-|    2    | :heavy_check_mark: |
-|    3    | :heavy_check_mark: |
-|    4    | :heavy_check_mark: |
-|    5    | :heavy_check_mark: |
-|    6    | :heavy_check_mark: |
-| Bonus 1 | :heavy_check_mark: |
-| Bonus 2 | :heavy_check_mark: |
-| Bonus 3 |        :x:         |
-| Bonus 4 |        :x:         |
 
 Thank you for your time!
